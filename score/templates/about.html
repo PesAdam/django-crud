@@ -1,7 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>about page</h1>
-<a href="{% url 'index' %}">home page</a>
+<div class="row">
+    <div class="col-12">
+        <div class="mt-5 text-center">
+            <h1 class="display-6">Vitajte v aplikácii na záznam skóre</h1>
+            <p class="lead">
+                Táto stránka vám umožňuje zaznamenávať, upravovať, pridávať a mazať skóre v tabuľke.
+            </p>
+        </div>
+        
+        <div class="mt-5">
+            <h2 class="text-center">Správa tabuľky skóre</h2>
+            <p>
+                Na správu tabuľky skóre prejdite na <a href="{% url 'index' %}">domovskú stránku</a>. Tu môžete zobraziť, pridať,
+                upraviť a mazať skóre v tabuľke.
+            </div>
+            </p>
+        
+        <div class="mt-5 text-center">
+            <h2>O autorovi</h2>
+            <p class="text-left">
+                Aplikáciu vytvoril Adam Belko, študent, vývojár a vášnivý nadšenec pre programovanie.
+                Jeho cieľom bolo vytvoriť jednoduchý nástroj na sledovanie skóre, ktorý je ľahko použiteľný a efektívny.
+                Ak máte akékoľvek otázky alebo spätnú väzbu, neváhajte kontaktovať autora na SPSIT.
+            </p>
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}

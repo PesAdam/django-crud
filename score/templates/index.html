@@ -1,7 +1,26 @@
 {% extends 'base.html' %}
+
 {% block content %}
+<div class="container text-center mt-5">
+    <h1>Score tabuľka</h1>
 
-<h1>hello world</h1>
-<a href="{% url 'about' %}">about page</a>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col-3" class="text-white">Name</th>
+                <th scope="col-3" class="text-white">Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for score in scores %}
+                <tr>
+                    <td class="text-white">{{ score.name }}</td>
+                    <td class="text-white">{{ score.value }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
+    <a class="btn btn-primary" href="{% url 'about' %}">About Page</a>
+</div>
 {% endblock %}
