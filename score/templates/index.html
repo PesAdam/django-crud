@@ -34,8 +34,8 @@
                             <td class="text-white">{{ score.name }}</td>
                             <td class="text-white">{{ score.value }}</td>
                             <td>
-                                <button formnovalidate name="edit" value="{{score.id}}">Edit</button>
-                                <button formnovalidate name="delete" value="{{score.id}}">Delete</button>
+                                <button class="btn btn-warning" formnovalidate name="edit" value="{{score.id}}">Edit</button>
+                                <button class="btn btn-danger" formnovalidate name="delete" value="{{score.id}}">Delete</button>
                             </td>
                         {% endif %}
                     </tr>
