@@ -13,23 +13,31 @@
                     <th scope="col-3" class="text-white">Score</th>
                     <th scope="col-3" class="text-white">Action</th>
                 </tr>
-                {% include 'save.html' %}
+                {% if not form.instance.id %}
+                    <tr>
+                        {% include 'save.html' %}
+                    </tr>
+                {% endif %}
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     {% for field in form %}
                         <td>{{field}}</td>
                     {% endfor %}
                     <td><button name="save">Uložiť</button></td>
-                </tr>
+                </tr> -->
                 {% for score in scores %}
                     <tr>
-                        <td class="text-white">{{ score.name }}</td>
-                        <td class="text-white">{{ score.value }}</td>
-                        <td>
-                            <button formnovalidate name="edit" value="{{score.id}}">Edit</button>
-                            <button formnovalidate name="delete" value="{{score.id}}">Delete</button>
-                        </td>
+                        {% if form.instance.id == score.id %}
+                            {% include 'save.html' %}
+                        {% else %}
+                            <td class="text-white">{{ score.name }}</td>
+                            <td class="text-white">{{ score.value }}</td>
+                            <td>
+                                <button formnovalidate name="edit" value="{{score.id}}">Edit</button>
+                                <button formnovalidate name="delete" value="{{score.id}}">Delete</button>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>
