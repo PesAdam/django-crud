@@ -3,23 +3,40 @@
 {% block content %}
 <div class="container text-center mt-5">
     <h1>Score tabuľka</h1>
-
-    <table class="table mt-4">
-        <thead>
-            <tr>
-                <th scope="col-3" class="text-white">Name</th>
-                <th scope="col-3" class="text-white">Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for score in scores %}
+    
+    <form method="post" action="{% url 'index' %}">
+        {% csrf_token %}
+        <table class="table mt-4">
+            <thead>
                 <tr>
-                    <td class="text-white">{{ score.name }}</td>
-                    <td class="text-white">{{ score.value }}</td>
+                    <th scope="col-3" class="text-white">Name</th>
+                    <th scope="col-3" class="text-white">Score</th>
+                    <th scope="col-3" class="text-white">Action</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                {% include 'save.html' %}
+            </thead>
+            <tbody>
+                <tr>
+                    {% for field in form %}
+                        <td>{{field}}</td>
+                    {% endfor %}
+                    <td><button name="save">Uložiť</button></td>
+                </tr>
+                {% for score in scores %}
+                    <tr>
+                        <td class="text-white">{{ score.name }}</td>
+                        <td class="text-white">{{ score.value }}</td>
+                        <td>
+                            <button formnovalidate name="edit" value="{{score.id}}">Edit</button>
+                            <button formnovalidate name="delete" value="{{score.id}}">Delete</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+
+</div>
 
     <a class="btn btn-primary" href="{% url 'about' %}">About Page</a>
 </div>
