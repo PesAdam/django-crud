@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from score.models import Score
 from score.forms import ScoreForm
+from django.contrib.auth import logout
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 def index(request):
     context = {}
@@ -27,9 +30,9 @@ def index(request):
             score = Score.objects.get(id=pk)
             form  = ScoreForm(instance=score)
     context['form'] = form
-    return render(request, 'index.html', context)
+    return render(request, 'score/index.html', context)
 
 def about(request):
     context = {}
     context['title'] = 'About'
-    return render(request, 'about.html', context)
+    return render(request, 'score/about.html', context)
